@@ -1,0 +1,12 @@
+/*
+ * Utilities used by pages added after the Lovable rebuild (e.g. /sponsorflow)
+ * that the original compiled stylesheet doesn't include. Values match Tailwind v3.
+ * Imported BEFORE lovable.css so its responsive (sm:/md:) rules still win.
+ */
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.max-w-xl { max-width: 36rem; }
+.mt-8 { margin-top: 2rem; }
+.hover\:bg-white\/20:hover { background-color: rgb(255 255 255 / 0.2); }
+@media (min-width: 640px) {
+  .sm\:pb-24 { padding-bottom: 6rem; }
+}

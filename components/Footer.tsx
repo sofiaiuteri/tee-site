@@ -108,6 +108,11 @@ export default function Footer() {
                   Advertise
                 </a>
               </li>
+              <li>
+                <Link href="/sponsorflow" className="text-white/80 hover:text-white transition-colors duration-200">
+                  SponsorFlow
+                </Link>
+              </li>
             </ul>
           </div>
           <div>

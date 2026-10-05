@@ -7,4 +7,7 @@ export const links = {
   submissionGuidelines: "https://docs.google.com/document/d/1vR2T70m_59Ik-6pCMWhGMPWme6rNYseWVThnF44PAyw/edit?usp=sharing",
   instagram: "https://www.instagram.com/expowlu/",
   email: "siuteri@mail.wlu.edu",
+  sponsorflow: "https://sponsorflow-self.vercel.app",
+  sponsorflowOrder: "https://sponsorflow-self.vercel.app/beta",
+  sponsorflowPreview: "https://sponsorflow-self.vercel.app/#start",
 };

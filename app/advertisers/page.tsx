@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -83,6 +84,19 @@ export default function AdvertisersPage() {
               className="w-full h-auto display-block"
             />
           </div>
+        </div>
+        <div className="max-w-3xl mx-auto mt-16 bg-forest-dark rounded-lg p-8 text-center shadow-nature">
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-4">Run a publication of your own?</h2>
+          <p className="text-white/80 mb-6">
+            SponsorFlow, from The Experience Exchange, finds brands that fit your audience and writes the first pitch —
+            20 researched sponsor matches for $29.
+          </p>
+          <Link
+            href="/sponsorflow"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-300 h-11 rounded-md px-8 gradient-sunset text-forest-dark hover:shadow-nature hover:scale-105"
+          >
+            Learn about SponsorFlow
+          </Link>
         </div>
       </main>
       <Footer />
