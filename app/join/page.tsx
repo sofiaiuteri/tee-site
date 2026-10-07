@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { links } from "@/lib/links";
+import ApplyForm from "@/components/ApplyForm";
 
 export const metadata: Metadata = {
   title: "Join Our Team | The Experience Exchange",
@@ -47,13 +48,6 @@ const perks = [
   ["Outdoor trips", "Hikes, paddles and adventures with a friendly creative crew."],
 ];
 
-function applyLink(role: string) {
-  const subject = encodeURIComponent(`Application: ${role}`);
-  const body = encodeURIComponent(
-    `Hi Sofia,\n\nI'd love to join The Experience Exchange as a ${role}.\n\nA bit about me:\n\nMy year / major:\n\nSamples or links:\n\nThanks!`,
-  );
-  return `mailto:${links.email}?subject=${subject}&body=${body}`;
-}
 
 export default function JoinPage() {
   return (
@@ -112,13 +106,26 @@ export default function JoinPage() {
                     <p className="text-muted-foreground mb-4">{role.what}</p>
                     <p className="text-sm font-semibold text-forest-medium mb-1">Who we're looking for</p>
                     <p className="text-muted-foreground mb-6 flex-grow">{role.who}</p>
-                    <a href={applyLink(role.title)} className={forestButton}>
-                      Apply by email
+                    <a href={`?role=${encodeURIComponent(role.title)}#apply`} className={forestButton}>
+                      Apply for this role
                     </a>
                     <p className="text-sm text-muted-foreground mt-3 text-center">Send {role.send}.</p>
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="apply" className="pb-16 sm:pb-24 scroll-mt-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-forest-dark mb-4 text-center">Apply</h2>
+              <p className="text-lg text-muted-foreground text-center mb-10">
+                Takes about 3 minutes. We&apos;re also looking for podcast hosts and producers, business and partnerships people, and
+                event and trip leaders.
+              </p>
+              <ApplyForm />
             </div>
           </div>
         </section>

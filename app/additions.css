@@ -8,6 +8,9 @@
 .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
 .mt-3 { margin-top: 0.75rem; }
 .mt-6 { margin-top: 1.5rem; }
+.mb-10 { margin-bottom: 2.5rem; }
+.gap-5 { gap: 1.25rem; }
+.space-y-5 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.25rem; }
 .mt-8 { margin-top: 2rem; }
 .border-forest-dark { border-color: hsl(var(--forest-dark)); }
 .text-white\/70 { color: rgb(255 255 255 / 0.7); }
@@ -17,4 +20,5 @@
 }
 @media (min-width: 640px) {
   .sm\:pb-24 { padding-bottom: 6rem; }
+  .sm\:p-8 { padding: 2rem; }
 }
