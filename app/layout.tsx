@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./additions.css";
 import "./lovable.css";
+import "./responsive.css";
 
 const title = "The Experience Exchange | W&L Outdoor Adventure Magazine";
 const description =
