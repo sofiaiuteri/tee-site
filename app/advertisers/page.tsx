@@ -98,6 +98,11 @@ export default function AdvertisersPage() {
             Learn about SponsorFlow
           </Link>
         </div>
+        <div className="max-w-3xl mx-auto mt-8 text-center">
+          <Link href="/advertise" className="text-forest-medium font-semibold hover:underline">
+            Want to advertise with us? See our media kit and packages →
+          </Link>
+        </div>
       </main>
       <Footer />
     </div>

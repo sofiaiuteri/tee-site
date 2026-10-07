@@ -99,14 +99,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="mailto:siuteri@mail.wlu.edu?subject=Advertising Inquiry"
-                  className="text-white/80 hover:text-white transition-colors duration-200"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/advertise" className="text-white/80 hover:text-white transition-colors duration-200">
                   Advertise
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/sponsorflow" className="text-white/80 hover:text-white transition-colors duration-200">
