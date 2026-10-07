@@ -6,6 +6,7 @@ import { useState, useSyncExternalStore } from "react";
 const APPLY_ENDPOINT = "https://sponsorflowhq.com/api/tee/apply";
 
 export const ROLES = [
+  "Campus Correspondent",
   "Graphic & Layout Designer",
   "Social Media & Content Creator",
   "Photographer & Videographer",
@@ -75,11 +76,15 @@ export default function ApplyForm() {
         </div>
         <div>
           <label htmlFor="email" className={label}>Email</label>
-          <input id="email" name="email" type="email" required autoComplete="email" placeholder="you@mail.wlu.edu" className={field} />
+          <input id="email" name="email" type="email" required autoComplete="email" placeholder="you@school.edu" className={field} />
+        </div>
+        <div>
+          <label htmlFor="school" className={label}>School</label>
+          <input id="school" name="school" required placeholder="Washington and Lee University" className={field} />
         </div>
         <div>
           <label htmlFor="role" className={label}>Role you&apos;re interested in</label>
-          <select key={roleFromUrl} id="role" name="role" defaultValue={ROLES.includes(roleFromUrl) ? roleFromUrl : ROLES[0]} className={field}>
+          <select key={roleFromUrl} id="role" name="role" defaultValue={ROLES.includes(roleFromUrl) ? roleFromUrl : ROLES[1]} className={field}>
             {ROLES.map((r) => (
               <option key={r}>{r}</option>
             ))}

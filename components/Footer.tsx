@@ -113,6 +113,11 @@ export default function Footer() {
                   Join Our Team
                 </Link>
               </li>
+              <li>
+                <Link href="/correspondents" className="text-white/80 hover:text-white transition-colors duration-200">
+                  Campus Correspondents
+                </Link>
+              </li>
             </ul>
           </div>
           <div>

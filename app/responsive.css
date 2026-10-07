@@ -11,3 +11,10 @@
   .xl\:hidden { display: none; }
 }
 .hover\:bg-muted\/30:hover { background-color: hsl(var(--muted) / 0.3); }
+@media (min-width: 640px) {
+  .sm\:p-10 { padding: 2.5rem; }
+}
+@media (min-width: 768px) {
+  .md\:flex-row { flex-direction: row; }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

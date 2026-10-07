@@ -15,9 +15,6 @@
 .border-forest-dark { border-color: hsl(var(--forest-dark)); }
 .text-white\/70 { color: rgb(255 255 255 / 0.7); }
 .hover\:bg-white\/20:hover { background-color: rgb(255 255 255 / 0.2); }
-@media (min-width: 768px) {
-  .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
 @media (min-width: 640px) {
   .sm\:pb-24 { padding-bottom: 6rem; }
   .sm\:p-8 { padding: 2rem; }

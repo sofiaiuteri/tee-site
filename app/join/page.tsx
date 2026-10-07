@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -88,6 +89,20 @@ export default function JoinPage() {
                   <p className="text-muted-foreground">{body}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto bg-forest-dark rounded-lg p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-nature">
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">Not at W&amp;L? Join from your campus.</h2>
+                <p className="text-white/80">Become The Experience Exchange&apos;s Campus Correspondent at your school and get published.</p>
+              </div>
+              <Link href="/correspondents" className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all duration-300 h-11 rounded-md px-8 gradient-sunset text-forest-dark hover:shadow-nature hover:scale-105">
+                Learn about correspondents
+              </Link>
             </div>
           </div>
         </section>
