@@ -113,6 +113,11 @@ export default function Footer() {
                   SponsorFlow
                 </Link>
               </li>
+              <li>
+                <Link href="/join" className="text-white/80 hover:text-white transition-colors duration-200">
+                  Join Our Team
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
