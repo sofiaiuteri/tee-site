@@ -206,6 +206,28 @@ export default function TeamPage() {
               <div className="p-0">
                 <div className="w-full h-64 overflow-hidden">
                   <img
+                    src="/images/bryn-hoppy.jpg"
+                    alt="Bryn Hoppy"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-serif font-semibold text-foreground mb-1">Bryn Hoppy</h3>
+                  <p className="text-sm text-forest-medium font-medium mb-4">Artist & Photographer</p>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                    Bryn is a junior at Pine Crest High School with a strong interest in art and photography.
+                    She enjoys exploring how art can connect people to the world around them and is especially
+                    interested in the ways nature can inspire creativity. For The Experience Exchange, she
+                    photographed work from Pine Crest&apos;s Art Club, featuring student artwork inspired by and
+                    created with nature, alongside a short reflection from her art teacher.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-lg bg-card text-card-foreground shadow-sm hover-scale border-2 border-forest-light/30 overflow-hidden">
+              <div className="p-0">
+                <div className="w-full h-64 overflow-hidden">
+                  <img
                     src="/images/nora-jacobson.jpg"
                     alt="Nora Jacobson"
                     className="w-full h-full object-cover object-center"
