@@ -215,11 +215,11 @@ export default function TeamPage() {
                   <h3 className="text-xl font-serif font-semibold text-foreground mb-1">Bryn Hoppy</h3>
                   <p className="text-sm text-forest-medium font-medium mb-4">Artist & Photographer</p>
                   <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                    Bryn is a junior at Pine Crest High School with a strong interest in art and photography.
-                    She enjoys exploring how art can connect people to the world around them and is especially
-                    interested in the ways nature can inspire creativity. For The Experience Exchange, she
-                    photographed work from Pine Crest&apos;s Art Club, featuring student artwork inspired by and
-                    created with nature, alongside a short reflection from her art teacher.
+                    I'm Bryn, a junior at Pine Crest High School with a strong interest in art and photography.
+                    I enjoy exploring how art can connect people to the world around them, and I'm especially
+                    interested in the ways nature can inspire creativity. For The Experience Exchange, I
+                    photographed work from Pine Crest's Art Club, featuring student artwork inspired by and
+                    created with nature, alongside a short reflection from my art teacher.
                   </p>
                 </div>
               </div>
