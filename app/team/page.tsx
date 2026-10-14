@@ -206,7 +206,7 @@ export default function TeamPage() {
               <div className="p-0">
                 <div className="w-full h-64 overflow-hidden">
                   <img
-                    src="/images/bryn-hoppy.jpg"
+                    src="/images/bryn-hoppy-v2.jpg"
                     alt="Bryn Hoppy"
                     className="w-full h-full object-cover object-center"
                   />
