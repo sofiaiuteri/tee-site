@@ -188,6 +188,30 @@ export default function SponsorFlowPage() {
           </div>
         </section>
 
+        {/* AI Visibility Check */}
+        <section className="pb-16 sm:pb-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto rounded-lg bg-card text-card-foreground shadow-sm border-2 border-border p-8 text-center">
+              <p className="text-sm uppercase tracking-wide text-muted-foreground mb-2">New from SponsorFlow</p>
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-forest-dark mb-4">AI Visibility Check</h2>
+              <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+                Own a local business? More and more customers ask ChatGPT and other AI tools where to go. We&apos;ll send
+                you a free report on whether AI recommends you and what it gets wrong, and we can do a full cleanup for $49.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://sponsorflowhq.com/ai-check" target="_blank" rel="noopener noreferrer" className={forestButton}>
+                  Get a free report
+                </a>
+              </div>
+              <p className="text-muted-foreground mt-8">
+                <a href="https://sponsorflowhq.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 font-medium text-forest-dark">
+                  See everything SponsorFlow offers
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Contact */}
         <section className="pb-16 sm:pb-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
