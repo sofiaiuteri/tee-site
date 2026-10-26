@@ -108,10 +108,11 @@
 
 <section>
   <h2>Weekly plan</h2>
-  <p class="muted">Fill in the week together. Aim for 3 to 4 posts plus a few stories. Content types are suggestions, so use whatever fits. Your entries save on this device. When the week is planned, copy it into the group chat.</p>
+  <p class="muted">Fill in the week together. Aim for 3 to 4 posts plus a few stories. Content types are suggestions, so use whatever fits. Changes save automatically and everyone with this link sees the same plan. When the week is planned, copy it into the group chat.</p>
   <div class="plan-bar">
     <label>Week of <input type="date" id="week"></label>
     <span class="plan-actions">
+      <span id="saved" class="muted" style="font-size:13px;align-self:center"></span>
       <button type="button" id="add">+ Add post</button>
       <button type="button" id="copy" class="primary">Copy plan for group chat</button>
     </span>
@@ -180,7 +181,6 @@
   const week = document.getElementById("week"), body = document.querySelector("#plan tbody");
   const monday = (d) => { d = new Date(d); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
   week.value = monday(new Date());
-  const key = () => "tee-plan-" + week.value;
   const sel = (name, val, opts) => `<select data-k="${name}">${opts.map(o => `<option${o===val?" selected":""}>${o}</option>`).join("")}</select>`;
   function rowHtml(r) {
     return `<td>${sel("day", r.day, ["",...DAYS])}</td>
@@ -191,12 +191,30 @@
   }
   function addRow(r = {}) { const tr = document.createElement("tr"); tr.innerHTML = rowHtml(r); body.appendChild(tr); }
   function read() { return [...body.rows].map(tr => Object.fromEntries([...tr.querySelectorAll("[data-k]")].map(e => [e.dataset.k, e.value]))); }
-  function save() { localStorage.setItem(key(), JSON.stringify(read())); }
-  function load() {
-    body.innerHTML = "";
-    const rows = JSON.parse(localStorage.getItem(key()) || "null") || [{day:"Tue"},{day:"Wed"},{day:"Thu"},{day:"Sun"}];
-    rows.forEach(addRow);
+  const API = "https://sponsorflowhq.com/api/tee-schedule";
+  const status = document.getElementById("saved");
+  let timer, dirty = false;
+  function save() {
+    dirty = true; status.textContent = "Saving…"; clearTimeout(timer);
+    timer = setTimeout(async () => {
+      try {
+        const r = await fetch(API, { method:"PUT", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ week: week.value, rows: read() }) });
+        if (!r.ok) throw 0; dirty = false; status.textContent = "Saved";
+      } catch { status.textContent = "Couldn't save, check your connection"; }
+    }, 600);
   }
+  async function load(quiet) {
+    try {
+      const r = await fetch(`${API}?week=${week.value}`, { cache:"no-store" });
+      const data = await r.json();
+      if (quiet && (dirty || body.contains(document.activeElement))) return;
+      const rows = data.rows || [{day:"Tue"},{day:"Wed"},{day:"Thu"},{day:"Sun"}];
+      if (quiet && JSON.stringify(rows) === JSON.stringify(read())) return;
+      body.innerHTML = ""; rows.forEach(addRow);
+      if (!quiet) status.textContent = data.updated_at ? "Last saved " + new Date(data.updated_at).toLocaleString([], { weekday:"short", hour:"numeric", minute:"2-digit" }) : "";
+    } catch { if (!quiet) status.textContent = "Couldn't load the plan, try refreshing"; }
+  }
+  setInterval(() => load(true), 20000);
   body.addEventListener("input", save); body.addEventListener("change", save);
   body.addEventListener("click", e => { if (e.target.classList.contains("x")) { e.target.closest("tr").remove(); save(); } });
   document.getElementById("add").onclick = () => { addRow(); save(); };
