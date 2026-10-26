@@ -33,6 +33,16 @@
   td { border-top:1px solid var(--line); padding:10px 12px; vertical-align:top; }
   .who { display:inline-block; font-size:12px; font-weight:700; padding:2px 10px; border-radius:999px; white-space:nowrap; }
   .who.l { background:#dcebe2; color:#1e4a33; } .who.b { background:#f8e6d3; color:#8a4c15; } .who.both { background:#eceeed; color:#3f4a44; }
+  .plan-bar { display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center; margin:14px 0 10px; }
+  .plan-bar input[type=date] { font:inherit; padding:6px 8px; border:1px solid var(--line); border-radius:8px; margin-left:6px; }
+  .plan-actions { display:flex; gap:8px; }
+  button { font:inherit; font-size:14px; padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:#fff; cursor:pointer; }
+  button.primary { background:var(--forest); color:#fff; border-color:var(--forest); }
+  button.x { border:0; background:none; color:var(--muted); font-size:18px; padding:2px 6px; }
+  .plan-wrap { overflow-x:auto; }
+  #plan td { padding:6px; }
+  #plan input, #plan select { font:inherit; font-size:14px; width:100%; padding:6px 8px; border:1px solid var(--line); border-radius:8px; background:#fff; min-width:90px; }
+  #plan td:nth-child(2) input { min-width:200px; }
   .folder { font-family:ui-monospace, Menlo, monospace; font-size:14px; background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px 20px; line-height:1.9; }
   .folder span { color:var(--muted); }
   .sources { font-size:13px; color:var(--muted); }
@@ -78,7 +88,7 @@
       <h3>Lily · Social Media Lead</h3>
       <ul>
         <li>Owns the account and posting calendar</li>
-        <li>Wednesday carousels and Sunday posts</li>
+        <li>Plans the week with Bryn</li>
         <li>Writes captions, posts, replies to comments and DMs</li>
         <li>Reviews Bryn's drafts</li>
         <li>Sends the Sunday update</li>
@@ -87,7 +97,7 @@
     <div class="card bryn">
       <h3>Bryn · Content + Growth</h3>
       <ul>
-        <li>Tuesday and Thursday videos</li>
+        <li>Videos for Reels and TikTok</li>
         <li>Uploads finished videos to the Drive the night before, with a caption idea</li>
         <li>Daily follow / unfollow routine</li>
         <li>Story ideas</li>
@@ -97,15 +107,20 @@
 </section>
 
 <section>
-  <h2>Weekly schedule</h2>
-  <table>
-    <tr><th>Day</th><th>Type</th><th>Content</th><th>Owner</th></tr>
-    <tr><td>Tuesday</td><td>Art + Nature</td><td>Art inspired by or made with nature, photo tips, process videos. TikTok + Reel.</td><td><span class="who b">Bryn</span></td></tr>
-    <tr><td>Wednesday</td><td>Carousel</td><td>5 to 10 photos, a "spots worth visiting" list, or an article as slides.</td><td><span class="who l">Lily</span></td></tr>
-    <tr><td>Thursday</td><td>Get Outside</td><td>A place worth going. TikTok + Reel.</td><td><span class="who b">Bryn</span></td></tr>
-    <tr><td>Sunday</td><td>Magazine / Join Us</td><td>Alternating: behind the scenes of the magazine, then a recruiting call.</td><td><span class="who l">Lily</span></td></tr>
-    <tr><td>2 to 3 days</td><td>Stories</td><td>Polls, questions, behind the scenes, reshares.</td><td><span class="who both">Both</span></td></tr>
-  </table>
+  <h2>Weekly plan</h2>
+  <p class="muted">Fill in the week together. Aim for 3 to 4 posts plus a few stories. Content types are suggestions, so use whatever fits. Your entries save on this device. When the week is planned, copy it into the group chat.</p>
+  <div class="plan-bar">
+    <label>Week of <input type="date" id="week"></label>
+    <span class="plan-actions">
+      <button type="button" id="add">+ Add post</button>
+      <button type="button" id="copy" class="primary">Copy plan for group chat</button>
+    </span>
+  </div>
+  <div class="plan-wrap"><table id="plan">
+    <thead><tr><th>Day</th><th>Idea</th><th>Type</th><th>Platform</th><th>Owner</th><th>Status</th><th></th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <datalist id="types"><option>Art + Nature</option><option>Get Outside</option><option>Carousel</option><option>Magazine</option><option>Join Us</option><option>Advertiser feature</option><option>Collab</option><option>Trend</option><option>Stories</option></datalist>
 </section>
 
 <section>
@@ -158,5 +173,43 @@
 
 </main>
 <footer>The Experience Exchange</footer>
+<script>
+(() => {
+  const DAYS = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  const OPTS = { platform:["","Instagram","TikTok","Both","Story"], owner:["","Lily","Bryn","Both"], status:["Idea","In progress","Ready","Posted"] };
+  const week = document.getElementById("week"), body = document.querySelector("#plan tbody");
+  const monday = (d) => { d = new Date(d); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+  week.value = monday(new Date());
+  const key = () => "tee-plan-" + week.value;
+  const sel = (name, val, opts) => `<select data-k="${name}">${opts.map(o => `<option${o===val?" selected":""}>${o}</option>`).join("")}</select>`;
+  function rowHtml(r) {
+    return `<td>${sel("day", r.day, ["",...DAYS])}</td>
+      <td><input data-k="idea" value="${(r.idea||"").replace(/"/g,"&quot;")}" placeholder="What's the post?"></td>
+      <td><input data-k="type" list="types" value="${(r.type||"").replace(/"/g,"&quot;")}" placeholder="Type"></td>
+      <td>${sel("platform", r.platform, OPTS.platform)}</td><td>${sel("owner", r.owner, OPTS.owner)}</td>
+      <td>${sel("status", r.status||"Idea", OPTS.status)}</td><td><button type="button" class="x" title="Remove">×</button></td>`;
+  }
+  function addRow(r = {}) { const tr = document.createElement("tr"); tr.innerHTML = rowHtml(r); body.appendChild(tr); }
+  function read() { return [...body.rows].map(tr => Object.fromEntries([...tr.querySelectorAll("[data-k]")].map(e => [e.dataset.k, e.value]))); }
+  function save() { localStorage.setItem(key(), JSON.stringify(read())); }
+  function load() {
+    body.innerHTML = "";
+    const rows = JSON.parse(localStorage.getItem(key()) || "null") || [{day:"Tue"},{day:"Wed"},{day:"Thu"},{day:"Sun"}];
+    rows.forEach(addRow);
+  }
+  body.addEventListener("input", save); body.addEventListener("change", save);
+  body.addEventListener("click", e => { if (e.target.classList.contains("x")) { e.target.closest("tr").remove(); save(); } });
+  document.getElementById("add").onclick = () => { addRow(); save(); };
+  week.addEventListener("change", () => { week.value = monday(week.value + "T12:00"); load(); });
+  document.getElementById("copy").onclick = function () {
+    const rows = read().filter(r => r.idea || r.type);
+    rows.sort((a,b) => DAYS.indexOf(a.day) - DAYS.indexOf(b.day));
+    const d = new Date(week.value + "T12:00").toLocaleDateString("en-US", { month:"short", day:"numeric" });
+    const text = `TEE plan, week of ${d}\n` + rows.map(r => `${r.day || "TBD"}: ${[r.type, r.idea].filter(Boolean).join(", ")}${r.platform ? " (" + r.platform + ")" : ""}${r.owner ? " · " + r.owner : ""} · ${r.status}`).join("\n");
+    navigator.clipboard.writeText(text).then(() => { this.textContent = "Copied!"; setTimeout(() => this.textContent = "Copy plan for group chat", 1500); });
+  };
+  load();
+})();
+</script>
 </body>
 </html>
