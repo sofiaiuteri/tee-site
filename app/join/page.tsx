@@ -8,7 +8,7 @@ import ApplyForm from "@/components/ApplyForm";
 export const metadata: Metadata = {
   title: "Join Our Team | The Experience Exchange",
   description:
-    "The Experience Exchange is looking for designers, social media creators, photographers, videographers and writers. Beginners welcome.",
+    "The Experience Exchange is looking for writers, designers, photographers, social media creators and leaders from any campus. Beginners welcome.",
 };
 
 const buttonBase =
@@ -43,6 +43,25 @@ const roles = [
   },
 ];
 
+const leadRoles = [
+  {
+    title: "Podcast Lead",
+    what: "Launch and run the TEE podcast: pick the format, book guests from our writers and the outdoor community, and record, edit and publish episodes.",
+  },
+  {
+    title: "Business Development Lead",
+    what: "Grow TEE's sponsors and partnerships. Find brands that fit our readers, pitch them, and help start new projects that bring in revenue.",
+  },
+  {
+    title: "Creative Director",
+    what: "Lead our designers and photographers, set the look of each issue and our social channels, and keep everything feeling like TEE.",
+  },
+  {
+    title: "Campus Network Lead",
+    what: "Grow TEE to new schools. Recruit and support Campus Correspondents, and help their stories make it into each issue.",
+  },
+];
+
 const perks = [
   ["Published work", "Your name in print and online, and real portfolio pieces."],
   ["Flexible hours", "Contribute around classes. Do as much as you can."],
@@ -69,8 +88,8 @@ export default function JoinPage() {
               Join The Experience Exchange
             </h1>
             <p className="text-lg sm:text-xl text-white/95 mb-8 leading-relaxed max-w-2xl mx-auto">
-              We're looking for designers, social media creators, photographers, videographers and writers who love the
-              outdoors. Beginners are welcome, and portfolios of any size are great.
+              We're looking for writers, designers, photographers, social media creators and new leaders who love the
+              outdoors, from any campus. Beginners are welcome, and portfolios of any size are great.
             </p>
             <a href="#roles" className={sunsetButton}>
               See open roles
@@ -103,6 +122,26 @@ export default function JoinPage() {
               <Link href="/correspondents" className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all duration-300 h-11 rounded-md px-8 gradient-sunset text-forest-dark hover:shadow-nature hover:scale-105">
                 Learn about correspondents
               </Link>
+            </div>
+          </div>
+        </section>
+
+        <section id="leadership" className="pb-16 sm:pb-24 scroll-mt-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-forest-dark mb-4 text-center">Leadership roles</h2>
+            <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+              Help lead TEE as it grows across campuses. Open to students at any school, and you&apos;d own your area from day one.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {leadRoles.map((role) => (
+                <div key={role.title} className="rounded-lg bg-card text-card-foreground shadow-sm border-2 border-border hover:border-forest-light transition-all duration-300 flex flex-col p-6">
+                  <h3 className="font-semibold tracking-tight text-2xl font-serif text-forest-dark mb-3">{role.title}</h3>
+                  <p className="text-muted-foreground mb-6 flex-grow">{role.what}</p>
+                  <a href={`?role=${encodeURIComponent(role.title)}#apply`} className={forestButton}>
+                    Apply for this role
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </section>

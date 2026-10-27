@@ -14,6 +14,10 @@ export const ROLES = [
   "Podcast Host & Producer",
   "Business & Partnerships",
   "Events & Trips",
+  "Podcast Lead",
+  "Business Development Lead",
+  "Creative Director",
+  "Campus Network Lead",
   "Not sure yet",
 ];
 
