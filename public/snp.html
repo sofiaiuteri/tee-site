@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Experience Exchange × Shenandoah National Park Trust</title>
+<style>
+  :root { --forest:#1e3d2f; --green:#2f6b4f; --moss:#7c9a6d; --gold:#c9a94a; --amber:#d98a3a; --sand:#f6f3ec; --ink:#1f2a24; --muted:#5a6b62; --line:#e3ded2; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; color:var(--ink); background:var(--sand); line-height:1.55; font-size:17px; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 26px; }
+  nav { position:sticky; top:0; z-index:20; background:rgba(246,243,236,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap { display:flex; gap:24px; padding:13px 26px; font-size:14px; overflow-x:auto; }
+  nav a { color:var(--muted); text-decoration:none; white-space:nowrap; } nav a:hover { color:var(--forest); }
+  .hero { position:relative; color:#fff; min-height:min(86vh, 640px); display:flex; align-items:flex-end; background:linear-gradient(180deg, rgba(20,40,30,.15) 0%, rgba(20,40,30,.8) 100%), url(/images/hero-mountain-trail.jpg) center/cover; }
+  .hero .wrap { padding-bottom:70px; }
+  .eyebrow { letter-spacing:.18em; text-transform:uppercase; font-size:13px; opacity:.85; margin:0 0 14px; }
+  .hero h1 { font-family:Georgia, serif; font-weight:600; font-size:58px; line-height:1.05; margin:0 0 18px; max-width:860px; }
+  .hero h1 em { color:#ead9b0; font-style:italic; }
+  .hero p { font-size:21px; max-width:640px; margin:0; opacity:.92; }
+  section { padding:84px 0 0; }
+  h2 { font-family:Georgia, serif; font-size:40px; line-height:1.1; color:var(--forest); margin:0 0 14px; font-weight:600; }
+  .lead { font-size:19px; color:var(--muted); max-width:720px; margin:0 0 34px; }
+  .stats { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; }
+  .stat { background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; }
+  .stat b { display:block; font-family:Georgia, serif; font-size:40px; color:var(--green); line-height:1; margin-bottom:8px; }
+  .stat span { color:var(--muted); font-size:15px; }
+  .grid3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-top:16px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px; }
+  .card h3 { margin:0 0 8px; font-size:19px; color:var(--forest); }
+  .card p { margin:0; color:var(--muted); font-size:16px; }
+  .strip { display:flex; gap:14px; overflow-x:auto; margin-top:22px; padding-bottom:6px; }
+  .strip figure { margin:0; flex:0 0 auto; }
+  .strip img { height:210px; border-radius:10px; display:block; box-shadow:0 6px 18px rgba(0,0,0,.12); }
+  .strip figcaption { font-size:13px; color:var(--muted); margin-top:6px; }
+  .pillars { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  .pillar { border-radius:18px; padding:28px; color:#fff; }
+  .pillar:nth-child(1) { background:var(--forest); } .pillar:nth-child(2) { background:var(--green); } .pillar:nth-child(3) { background:#8a6a2e; }
+  .pillar .n { font-family:Georgia, serif; font-size:15px; opacity:.7; }
+  .pillar h3 { font-family:Georgia, serif; font-size:26px; margin:6px 0 10px; font-weight:600; }
+  .pillar p { margin:0; opacity:.9; font-size:16px; }
+  .tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+  .tab { font:inherit; font-size:15px; padding:10px 18px; border-radius:999px; border:1px solid var(--line); background:#fff; cursor:pointer; color:var(--forest); }
+  .tab.on { background:var(--forest); color:#fff; border-color:var(--forest); }
+  .panel { display:none; grid-template-columns:1.1fr 1fr; gap:34px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:22px; padding:34px; }
+  .panel.on { display:grid; }
+  .panel h3 { font-family:Georgia, serif; font-size:30px; color:var(--forest); margin:0 0 10px; font-weight:600; }
+  .panel ul { padding-left:20px; margin:12px 0 0; color:var(--muted); } .panel li { margin:6px 0; }
+  .spread { display:grid; grid-template-columns:1fr 1fr; aspect-ratio:2/1.15; box-shadow:0 14px 34px rgba(0,0,0,.22); border-radius:4px; overflow:hidden; background:#fbf9f4; }
+  .spread .l { background:url(/images/hero-mountain-trail.jpg) 30% center/cover; position:relative; }
+  .spread .l span { position:absolute; left:12px; bottom:10px; color:#fff; font-size:9px; font-style:italic; }
+  .spread .r { padding:20px 18px; font-size:7px; color:#555; line-height:1.5; border-left:1px solid #e8e2d4; }
+  .spread .r .k { font-size:7px; letter-spacing:.2em; color:var(--green); text-transform:uppercase; }
+  .spread .r h4 { font-family:Georgia, serif; font-size:21px; color:var(--forest); margin:6px 0 4px; line-height:1.05; }
+  .spread .r .by { font-size:7.5px; color:var(--amber); margin-bottom:8px; }
+  .spread .r .cols { columns:2; column-gap:10px; }
+  .spread .r .badge { margin-top:10px; border-top:1px solid #e8e2d4; padding-top:6px; font-size:7px; color:var(--forest); font-weight:600; }
+  .ig { width:330px; max-width:100%; margin:0 auto; background:#fff; border:1px solid #dbdbdb; border-radius:12px; overflow:hidden; font-size:13px; box-shadow:0 14px 34px rgba(0,0,0,.15); }
+  .ig .top { display:flex; align-items:center; gap:9px; padding:10px 12px; }
+  .ig .av { width:30px; height:30px; border-radius:50%; background:var(--forest); color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; }
+  .ig .top small { display:block; color:#888; font-size:11px; }
+  .ig .pic { aspect-ratio:4/5; background:linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url(/images/hero-mountain-trail.jpg) 60% center/cover; position:relative; }
+  .ig .pic div { position:absolute; left:16px; bottom:16px; right:16px; color:#fff; font-family:Georgia, serif; font-size:24px; line-height:1.1; }
+  .ig .cap { padding:10px 12px 14px; color:#222; }
+  .screen { aspect-ratio:16/9; border-radius:10px; background:linear-gradient(135deg, #10251c, #2f6b4f 70%, #c9a94a); color:#fff; display:flex; flex-direction:column; justify-content:center; padding:28px; box-shadow:0 14px 34px rgba(0,0,0,.25); position:relative; }
+  .screen .k { font-size:11px; letter-spacing:.2em; opacity:.75; text-transform:uppercase; }
+  .screen h4 { font-family:Georgia, serif; font-size:30px; margin:8px 0; line-height:1.05; font-weight:600; }
+  .screen p { margin:0; opacity:.85; font-size:13px; }
+  .screen .tee { position:absolute; right:18px; bottom:14px; font-size:10px; opacity:.75; letter-spacing:.1em; }
+  .poster { aspect-ratio:3/4; max-width:320px; margin:0 auto; border-radius:8px; background:#f3ead6; border:10px solid #fff; box-shadow:0 14px 34px rgba(0,0,0,.18); padding:24px 22px; display:flex; flex-direction:column; color:var(--forest); }
+  .poster .k { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--amber); }
+  .poster h4 { font-family:Georgia, serif; font-size:30px; line-height:1.02; margin:8px 0 10px; font-weight:600; }
+  .poster .cats { display:flex; gap:6px; margin:6px 0 14px; } .poster .cats span { font-size:10px; padding:4px 8px; border-radius:999px; background:var(--forest); color:#fff; }
+  .poster p { font-size:12px; margin:0 0 8px; color:#3d5a50; }
+  .poster .foot { margin-top:auto; font-size:10px; border-top:1px solid #d9cba8; padding-top:8px; }
+  .idcard { width:330px; max-width:100%; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 14px 34px rgba(0,0,0,.2); background:#fff; }
+  .idcard .band { background:var(--forest); color:#fff; padding:16px 18px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+  .idcard .body { padding:18px; display:flex; gap:14px; align-items:center; }
+  .idcard .ph { width:70px; height:70px; border-radius:50%; background:linear-gradient(135deg, var(--moss), var(--gold)); }
+  .idcard h4 { margin:0; font-family:Georgia, serif; font-size:21px; color:var(--forest); }
+  .idcard small { color:var(--muted); }
+  .idcard .tasks { padding:0 18px 18px; font-size:13px; color:var(--muted); }
+  .day { background:#fff; border-radius:16px; box-shadow:0 14px 34px rgba(0,0,0,.15); overflow:hidden; max-width:360px; margin:0 auto; }
+  .day .pic { height:150px; background:url(/images/hero-mountain-trail.jpg) center 70%/cover; }
+  .day .in { padding:18px; } .day h4 { margin:0 0 6px; font-family:Georgia, serif; font-size:22px; color:var(--forest); }
+  .day .row { display:flex; justify-content:space-between; font-size:13px; color:var(--muted); border-top:1px solid var(--line); padding:7px 0; }
+  .builder { display:grid; grid-template-columns:1.5fr 1fr; gap:22px; align-items:start; }
+  .presets { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .opt { display:flex; gap:14px; align-items:flex-start; background:#fff; border:2px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:10px; cursor:pointer; transition:border-color .2s, background .2s; }
+  .opt:hover { border-color:var(--moss); }
+  .opt.on { border-color:var(--green); background:#f2f7f3; }
+  .opt input { margin-top:4px; width:18px; height:18px; accent-color:var(--green); }
+  .opt b { display:block; color:var(--forest); }
+  .opt span { color:var(--muted); font-size:15px; }
+  .opt .val { margin-left:auto; color:var(--green); font-weight:600; white-space:nowrap; display:none; }
+  .showval .opt .val { display:block; }
+  .summary { position:sticky; top:70px; background:var(--forest); color:#fff; border-radius:18px; padding:24px; }
+  .summary h3 { font-family:Georgia, serif; font-size:24px; margin:0 0 4px; font-weight:600; }
+  .summary .tier { color:#ead9b0; font-size:14px; margin-bottom:14px; }
+  .summary ul { margin:0 0 16px; padding-left:18px; font-size:15px; opacity:.92; } .summary li { margin:5px 0; }
+  .summary .total { display:none; border-top:1px solid rgba(255,255,255,.2); padding-top:12px; margin-bottom:14px; }
+  .showval .summary .total { display:block; }
+  .summary .total b { font-family:Georgia, serif; font-size:32px; display:block; }
+  .summary .total small { opacity:.75; }
+  .btn { font:inherit; font-size:15px; display:inline-block; padding:11px 20px; border-radius:999px; border:0; cursor:pointer; text-decoration:none; }
+  .btn.gold { background:#ead9b0; color:var(--forest); font-weight:600; }
+  .btn.line { background:#fff; border:1px solid var(--line); color:var(--forest); }
+  .switch { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--muted); margin-left:auto; cursor:pointer; }
+  .timeline { position:relative; margin-top:10px; }
+  .tl { display:grid; grid-template-columns:150px 1fr; gap:22px; padding:18px 0; border-top:1px solid var(--line); }
+  .tl b { color:var(--green); font-family:Georgia, serif; font-size:19px; }
+  .tl p { margin:0; color:var(--muted); }
+  .tl h4 { margin:0 0 4px; color:var(--forest); font-size:17px; }
+  .close { margin:84px 0 60px; background:var(--forest); color:#fff; border-radius:24px; padding:46px; display:grid; grid-template-columns:1.4fr 1fr; gap:30px; align-items:center; }
+  .close h2 { color:#fff; } .close p { opacity:.88; margin:0; }
+  .close ol { margin:0; padding-left:20px; } .close li { margin:8px 0; }
+  footer { text-align:center; color:var(--muted); font-size:13px; padding:0 0 40px; }
+  @media (max-width:860px) { .hero h1 { font-size:40px; } .stats, .grid3, .pillars { grid-template-columns:1fr 1fr; } .panel.on, .builder, .close { grid-template-columns:1fr; } .tl { grid-template-columns:1fr; gap:4px; } }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#built">What we've built</a><a href="#idea">The idea</a><a href="#samples">What it looks like</a><a href="#build">Build a partnership</a><a href="#year">A year together</a><a href="#next">Next steps</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">A partnership proposal · October 2026</p>
+  <h1>The Experience Exchange <em>×</em> Shenandoah National Park Trust</h1>
+  <p>Bringing the next generation of storytellers, volunteers and park lovers to Shenandoah.</p>
+</div></header>
+
+<main class="wrap">
+
+<section id="built">
+  <h2>What we've built</h2>
+  <p class="lead">The Experience Exchange (TEE) is a student-run outdoor, environmental and experiential storytelling magazine. It started at Washington and Lee and is now growing to campuses across the country.</p>
+  <div class="stats">
+    <div class="stat"><b>40+</b><span>students on our creative team</span></div>
+    <div class="stat"><b>$5,000</b><span>in ad revenue from our first edition</span></div>
+    <div class="stat"><b>~90%</b><span>of advertisers renewed for Edition 2</span></div>
+    <div class="stat"><b>81%</b><span>of readers would recommend TEE</span></div>
+  </div>
+  <div class="grid3">
+    <div class="card"><h3>A real print magazine</h3><p>About 75 pages per edition, two editions a year, distributed on campus, at the W&amp;L Bookstore, local cafés and partner retailers.</p></div>
+    <div class="card"><h3>A growing student network</h3><p>Writers, photographers, designers and Campus Correspondents at schools across the country, plus a podcast in the works.</p></div>
+    <div class="card"><h3>Partners who come back</h3><p>Local businesses like Walkabout Outfitter and Lex Running Shop advertise with us, and nearly all of them renewed.</p></div>
+  </div>
+  <div class="strip">
+    <figure><img src="/images/magazine-escape.jpg" alt="Escape to Nature spread"><figcaption>"Escape to Nature" spread</figcaption></figure>
+    <figure><img src="/images/magazine-geology.jpg" alt="Beneath the Surface spread"><figcaption>"Beneath the Surface" feature</figcaption></figure>
+    <figure><img src="/images/blue-ridge-fishing.png" alt="Blue Ridge Fishing Adventures ad"><figcaption>Partner ad: Blue Ridge Fishing Adventures</figcaption></figure>
+    <figure><img src="/images/appalachian-sage.png" alt="Appalachian Sage ad"><figcaption>Partner ad: Appalachian Sage</figcaption></figure>
+    <figure><img src="/images/outing-club.png" alt="Outing Club page"><figcaption>Community page: W&amp;L Outing Club</figcaption></figure>
+  </div>
+</section>
+
+<section id="idea">
+  <h2>The idea: TEE as the Trust's official student media partner</h2>
+  <p class="lead">Our readers are exactly who the Trust's next chapter depends on: students who love the outdoors, care about sustainability (86% of our readers factor it into what they buy) and want to get involved.</p>
+  <div class="pillars">
+    <div class="pillar"><div class="n">01</div><h3>Tell Shenandoah's stories</h3><p>Features, photo essays and social content that bring the park and the Trust's work to a young audience.</p></div>
+    <div class="pillar"><div class="n">02</div><h3>Get students out there</h3><p>Volunteer days, campus ambassadors and a creative competition that turn readers into stewards.</p></div>
+    <div class="pillar"><div class="n">03</div><h3>Fuel the Trust's mission</h3><p>Fill seats at Banff, grow the next generation of supporters, and give the Trust a voice on campuses.</p></div>
+  </div>
+</section>
+
+<section id="samples">
+  <h2>What it could look like</h2>
+  <p class="lead">Sample deliverables. Click through each one.</p>
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-p="p1">Magazine feature</button>
+    <button class="tab" data-p="p2">Instagram series</button>
+    <button class="tab" data-p="p3">Banff 2027</button>
+    <button class="tab" data-p="p4">Creative competition</button>
+    <button class="tab" data-p="p5">Campus ambassadors</button>
+    <button class="tab" data-p="p6">Volunteer day</button>
+  </div>
+
+  <div class="panel on" id="p1">
+    <div><h3>"A Weekend in Shenandoah"</h3>
+      <p class="muted">A multi-page feature in our spring edition, written and photographed by TEE students.</p>
+      <ul><li>Trails, overlooks and where to camp, from a student's point of view</li><li>A spotlight on the Trust's work: Trailblazers, artists-in-residence, trail restoration</li><li>"Presented with the Shenandoah National Park Trust" credit and a way to give or volunteer</li><li>Also published on our website and shared on Instagram</li></ul></div>
+    <div class="spread"><div class="l"><span>Photo: TEE student photographer</span></div><div class="r"><div class="k">Destinations</div><h4>A Weekend in Shenandoah</h4><div class="by">Words and photos by TEE students</div><div class="cols">About an hour from campus, the Blue Ridge opens up into 200,000 acres of hollows, waterfalls and overlooks. We spent a weekend on the trails, met the people working to protect them, and learned how students can be part of the park's next chapter. Day one started before sunrise on Skyline Drive, with fog still sitting in the valleys below. By noon we were knee-deep in a creek with a Trailblazers crew. The Trust's youth program pairs young people with real stewardship work, from trail repair to native planting.</div><div class="badge">Presented with the Shenandoah National Park Trust</div></div></div>
+  </div>
+
+  <div class="panel" id="p2">
+    <div><h3>"Shenandoah Sundays"</h3>
+      <p class="muted">A monthly Instagram series on @expowlu, made by our social team.</p>
+      <ul><li>Trail guides, park history, and the people behind the Trust</li><li>Reels from student trips, plus Stories with polls and links to volunteer or donate</li><li>Collab posts, so each one appears on both accounts and reaches both audiences</li><li>Clearly labeled as a partnership</li></ul></div>
+    <div class="ig"><div class="top"><div class="av">TEE</div><div><b>expowlu</b><small>Paid partnership with Shenandoah National Park Trust</small></div></div><div class="pic"><div>3 sunrise hikes in Shenandoah worth the alarm</div></div><div class="cap"><b>expowlu</b> Shenandoah Sundays, episode 1 🌄 Our favorite early morning trails, plus how the @snptrust keeps them open for all of us. Save this for your next weekend.</div></div>
+  </div>
+
+  <div class="panel" id="p3">
+    <div><h3>Student Night at Banff</h3>
+      <p class="muted">Help fill the Paramount with students for the Trust's Banff Centre Mountain Film Festival.</p>
+      <ul><li>A student ticket push on Instagram and across our campus network</li><li>A TEE table in the lobby and our ad on screen between films</li><li>Competition winners showcased at the festival</li><li>TEE coverage of the night in print and online</li></ul></div>
+    <div class="screen"><div class="k">Shenandoah National Park Trust presents</div><h4>Banff Mountain Film Festival</h4><p>Student night, with The Experience Exchange. Student tickets at the link in @expowlu's bio.</p><div class="tee">THE EXPERIENCE EXCHANGE · STUDENT MEDIA PARTNER</div></div>
+  </div>
+
+  <div class="panel" id="p4">
+    <div><h3>Stories of Shenandoah Student Prize</h3>
+      <p class="muted">A writing, photo and art competition for students, inspired by the Trust's "Stories of Shenandoah" work.</p>
+      <ul><li>Open to students at any school, promoted through our network</li><li>Winners published in TEE and shared on both organizations' channels</li><li>Winning work shown at Banff</li><li>Prize ideas: park passes, Banff tickets, Trust gear</li></ul></div>
+    <div class="poster"><div class="k">Student creative competition</div><h4>Stories of Shenandoah</h4><div class="cats"><span>Writing</span><span>Photography</span><span>Art</span></div><p>Tell us about a place in Shenandoah that changed how you see the world.</p><p>Winners will be published in The Experience Exchange and featured at the Banff Mountain Film Festival.</p><div class="foot">The Experience Exchange × Shenandoah National Park Trust</div></div>
+  </div>
+
+  <div class="panel" id="p5">
+    <div><h3>Shenandoah Student Ambassadors</h3>
+      <p class="muted">Students at Virginia campuses who represent the Trust on their campus.</p>
+      <ul><li>Share Trust events, volunteer days and Banff tickets with their classmates</li><li>Lead groups on volunteer days</li><li>Create content for TEE and the Trust</li><li>A path into the Trust's internships and Young Professionals Council</li></ul></div>
+    <div class="idcard"><div class="band">Shenandoah Student Ambassador</div><div class="body"><div class="ph"></div><div><h4>Your Name</h4><small>Washington and Lee · Class of 2028</small></div></div><div class="tasks">This semester: 2 Instagram takeovers · led a volunteer day with 14 students · sold 30 Banff tickets</div></div>
+  </div>
+
+  <div class="panel" id="p6">
+    <div><h3>TEE Volunteer Day</h3>
+      <p class="muted">A student volunteer day in the park each semester, organized by TEE with the Trust.</p>
+      <ul><li>TEE recruits the students and handles logistics</li><li>The Trust picks the project: trail work, planting, cleanup</li><li>Covered in the magazine and on social</li><li>Timed for Earth Month in April</li></ul></div>
+    <div class="day"><div class="pic"></div><div class="in"><h4>TEE Volunteer Day</h4><div class="row"><span>When</span><span>Saturday in April</span></div><div class="row"><span>Where</span><span>Shenandoah National Park</span></div><div class="row"><span>Project</span><span>Trail restoration with the Trust</span></div><div class="row"><span>Who</span><span>Students from any campus</span></div></div></div>
+  </div>
+</section>
+
+<section id="build">
+  <div style="display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap">
+    <div><h2>Build a partnership</h2><p class="lead" style="margin-bottom:18px">Pick a starting point, then add or remove pieces.</p></div>
+    <label class="switch"><input type="checkbox" id="showval"> Show estimated value</label>
+  </div>
+  <div class="builder" id="builder">
+    <div>
+      <div class="presets">
+        <button class="btn line" data-preset="trail">Trail Partner</button>
+        <button class="btn line" data-preset="official">Official Student Media Partner</button>
+        <button class="btn line" data-preset="founding">Founding Partner</button>
+      </div>
+      <div id="opts"></div>
+    </div>
+    <aside class="summary">
+      <h3>Your partnership</h3>
+      <div class="tier" id="tier">Custom</div>
+      <ul id="sumlist"></ul>
+      <div class="total"><small>Estimated value</small><b id="total">$0</b><small>In-kind exchanges welcome</small></div>
+      <a class="btn gold" id="send" href="#">Email this package to Sofia</a>
+    </aside>
+  </div>
+</section>
+
+<section id="year">
+  <h2>A year together</h2>
+  <p class="lead">One way the first year could unfold.</p>
+  <div class="timeline">
+    <div class="tl"><b>Nov to Dec</b><div><h4>Kickoff</h4><p>Announce the partnership on both channels. First "Shenandoah Sundays" post.</p></div></div>
+    <div class="tl"><b>January</b><div><h4>Competition opens, ambassadors start</h4><p>Stories of Shenandoah Student Prize launches. First ambassadors begin on Virginia campuses.</p></div></div>
+    <div class="tl"><b>Before Banff</b><div><h4>Student ticket push</h4><p>Campaign across our network. Competition winners announced and showcased at the festival.</p></div></div>
+    <div class="tl"><b>Spring</b><div><h4>Spring edition and volunteer day</h4><p>"A Weekend in Shenandoah" feature and competition winners in print. TEE Volunteer Day for Earth Month.</p></div></div>
+    <div class="tl"><b>Fall 2027</b><div><h4>Look back and renew</h4><p>Share results: reach, tickets, volunteers, entries. Plan year two.</p></div></div>
+  </div>
+</section>
+
+<section id="next" style="padding-top:0">
+  <div class="close">
+    <div><h2>Let's build it together</h2><p>Everything here is a starting point. We'd love to shape it around what matters most to the Trust this year.</p></div>
+    <ol><li>Pick the pieces that fit your goals</li><li>Sofia sends a one-page summary</li><li>Kick off with a first post and the spring feature</li></ol>
+  </div>
+</section>
+</main>
+
+<footer>Sofia Iuteri · Founder &amp; Editor-in-Chief, The Experience Exchange · siuteri@mail.wlu.edu · <a href="https://theexperienceexchange.vercel.app" style="color:inherit">theexperienceexchange.vercel.app</a></footer>
+
+<script>
+  // Sample deliverable tabs
+  document.getElementById("tabs").addEventListener("click", (e) => {
+    const t = e.target.closest(".tab"); if (!t) return;
+    document.querySelectorAll(".tab").forEach((b) => b.classList.toggle("on", b === t));
+    document.querySelectorAll(".panel").forEach((p) => p.classList.toggle("on", p.id === t.dataset.p));
+  });
+
+  // Partnership builder
+  const OPTS = [
+    { id:"badge", name:"Official partner credit", desc:"\"Official Student Media Partner\" in every issue and on our website.", val:200 },
+    { id:"feature", name:"Magazine feature", desc:"\"A Weekend in Shenandoah,\" a multi-page spring feature.", val:400 },
+    { id:"ig", name:"Shenandoah Sundays", desc:"A monthly Instagram series with Collab posts (8 posts).", val:320 },
+    { id:"volunteer", name:"Volunteer day", desc:"A TEE student volunteer day in the park each semester.", val:150 },
+    { id:"banff", name:"Banff student night", desc:"Student ticket push, lobby table and coverage.", val:250 },
+    { id:"prize", name:"Stories of Shenandoah Prize", desc:"A student writing, photo and art competition.", val:500 },
+    { id:"ambassadors", name:"Student ambassadors", desc:"Trust ambassadors on Virginia campuses.", val:400 },
+    { id:"podcast", name:"Podcast episode", desc:"A TEE podcast episode with the Trust team.", val:150 },
+  ];
+  const PRESETS = {
+    trail: { name:"Trail Partner", ids:["badge","feature","ig"] },
+    official: { name:"Official Student Media Partner", ids:["badge","feature","ig","volunteer","banff","prize"] },
+    founding: { name:"Founding Partner", ids:OPTS.map((o) => o.id) },
+  };
+  const opts = document.getElementById("opts");
+  opts.innerHTML = OPTS.map((o) => `<label class="opt" data-id="${o.id}"><input type="checkbox" value="${o.id}"><div><b>${o.name}</b><span>${o.desc}</span></div><div class="val">$${o.val}</div></label>`).join("");
+  const fmt = (n) => "$" + n.toLocaleString();
+  function update() {
+    const picked = OPTS.filter((o) => opts.querySelector(`input[value="${o.id}"]`).checked);
+    opts.querySelectorAll(".opt").forEach((l) => l.classList.toggle("on", l.querySelector("input").checked));
+    const ids = picked.map((o) => o.id).sort().join();
+    const match = Object.values(PRESETS).find((p) => [...p.ids].sort().join() === ids);
+    document.getElementById("tier").textContent = picked.length ? (match ? match.name : "Custom package") : "Pick a few pieces to start";
+    document.getElementById("sumlist").innerHTML = picked.map((o) => `<li>${o.name}</li>`).join("");
+    document.getElementById("total").textContent = fmt(picked.reduce((s, o) => s + o.val, 0));
+    const body = "Hi Sofia,\n\nHere's the partnership package we put together:\n\n" + picked.map((o) => "- " + o.name).join("\n") + "\n\nThanks!";
+    document.getElementById("send").href = "mailto:siuteri@mail.wlu.edu?subject=" + encodeURIComponent("TEE x Shenandoah National Park Trust partnership") + "&body=" + encodeURIComponent(body);
+  }
+  function preset(key) { const p = PRESETS[key]; opts.querySelectorAll("input").forEach((i) => (i.checked = p.ids.includes(i.value))); update(); }
+  opts.addEventListener("change", update);
+  document.querySelectorAll("[data-preset]").forEach((b) => b.addEventListener("click", () => preset(b.dataset.preset)));
+  document.getElementById("showval").addEventListener("change", (e) => document.getElementById("builder").classList.toggle("showval", e.target.checked));
+  preset("official");
+</script>
+</body>
+</html>
